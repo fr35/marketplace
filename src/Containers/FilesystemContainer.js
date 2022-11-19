@@ -1,6 +1,6 @@
 import fs from "fs";
 
-class ContainerFilesystem {
+class FilesystemContainer {
   constructor(fileName) {
     this.filePath = `./src/db/${fileName}.json`;
   }
@@ -118,4 +118,4 @@ class ContainerFilesystem {
   }
 }
 
-export { ContainerFilesystem };
+export {FilesystemContainer}
