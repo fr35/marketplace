@@ -1,13 +1,13 @@
 import { Schema } from "mongoose"
 
-const cartsCollections = "products"
+const cartCollections = "products"
 const cartSchema = new Schema({
     timestamp: {type: String, required: true},
     products: [{type: Schema.Types.ObjectId, ref: "products"}]
 }, {
     virtuals: true
 })
-productSchema.set("toJSON", {
+cartSchema.set("toJSON", {
     transform: (_, response) => {
         response.id = response._id
         delete response._id
@@ -15,4 +15,4 @@ productSchema.set("toJSON", {
     }
 })
 
-export const cartModel = {cartsCollections, cartSchema}
+export const cartModel = {cartCollections, cartSchema}
