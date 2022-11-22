@@ -1,6 +1,6 @@
 import { Schema } from "mongoose"
 
-const cartCollections = "products"
+const cartCollections = "carts"
 const cartSchema = new Schema({
     timestamp: {type: String, required: true},
     products: [{type: Schema.Types.ObjectId, ref: "products"}]
