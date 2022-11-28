@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 class MongoDBContainer {
-    constructor(collection, schema) {
+    constructor({collection, schema}) {
     this.model = mongoose.model(collection, schema)
     }
 

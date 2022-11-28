@@ -1,6 +1,6 @@
 import express from "express"
 import { config } from "./config/index.js"
-import { ProductRouter, CartRouter } from "./routers/index.js"
+import { ProductRouter, CartRouter, MessagesRouter } from "./routers/index.js"
 import cors from "cors"
 
 const app = express()
@@ -13,6 +13,7 @@ app.use(express.static("public"))
 
 app.use("/api/products", ProductRouter)
 app.use("/api/cart", CartRouter)
+app.use("/api/messages", MessagesRouter)
 
 const server = app.listen(config.SERVER.PORT, () =>
     console.log(`Server running on port ${server.address().port}`)
