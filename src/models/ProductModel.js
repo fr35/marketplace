@@ -1,4 +1,4 @@
-import { Schema } from "mongoose"
+import { Schema, mongoose } from "mongoose"
 
 const productCollections = "products"
 const productSchema = new Schema({
@@ -12,12 +12,7 @@ const productSchema = new Schema({
 }, {
     virtuals: true
 })
-productSchema.set("toJSON", {
-    transform: (_, response) => {
-        response.id = response._id
-        delete response._id
-        return response
-    }
-})
 
 export const productModel = {productCollections, productSchema}
+
+export const productos = new mongoose.model(productCollections, productSchema)

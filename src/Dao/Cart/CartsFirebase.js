@@ -1,4 +1,4 @@
-import { FirebaseContainer } from "../../Containers";
+import { FirebaseContainer } from "../../Containers/FirebaseContainer.js";
 
 export class CartsFirebase extends FirebaseContainer {
     constructor() {

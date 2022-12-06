@@ -1,8 +1,8 @@
-import {admin} from "firebase-admin"
-import {serviceAccount} from "../../db/firebaseDB.json"
+import admin from "firebase-admin"
+import * as serviceAccount from "../../db/firebaseDB.json" assert {type: "json"}
 
 
-const conect = async()=>{
+const conectFirebase = async()=>{
 	try{
 		admin.initializeApp({
 			credential: admin.credential.cert(serviceAccount)
@@ -18,5 +18,5 @@ const conect = async()=>{
 }
 
 export const FirebaseService = {
-    conect
+    conectFirebase
 }

@@ -7,7 +7,7 @@ import {MessagesMongo, MessagesFilesystem, MessagesMemory, MessagesFirebase} fro
 const getSelectedDaos = () => {
     switch (config.SERVER.SELECTED_DATABASE) {
         case "mongo": {
-            MongoDBService.init()
+            MongoDBService.conectMongoDb()
             return {
                 ProductDao: new ProductsMongo(),
                 CartDao: new CartsMongo(),
@@ -15,7 +15,7 @@ const getSelectedDaos = () => {
             }
         }
         case "firebase": {
-            FirebaseService.conect()
+            FirebaseService.conectFirebase()
             return {
                 ProductDao: new ProductsFirebase(),
                 CartDao: new CartsFirebase(),

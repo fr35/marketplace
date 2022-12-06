@@ -1,4 +1,4 @@
-import {conect} from "../services/FirebaseService/index.js"
+import {FirebaseService} from "../services/FirebaseService/index.js"
 
 class FirebaseContainer {
     constructor(collection) {
