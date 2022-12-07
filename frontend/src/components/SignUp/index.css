@@ -1,0 +1,10 @@
+#containerLogIn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#formContainerLogIn {
+    border: 1px solid;
+    padding: 20px 200px 20px 200px;
+}

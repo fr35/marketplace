@@ -1,0 +1,16 @@
+#containerLogIn {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#formContainerLogIn {
+    border: 1px solid;
+    padding: 50px 150px 100px 150px;
+}
+
+
+
+
+
+

@@ -2,21 +2,21 @@ import './index.css'
 
 export default function Header() {
     return (
-        <div id='container'>
-            <div id='logoContainer'>
-                <h1 id='textLogo'>Marketplace</h1>
-                <i class="bi bi-shop" id='logo'></i>
+        <header id='containerHeader'>
+            <div id='logoContainerHeader'>
+                <h1 id='textLogoHeader'>Marketplace</h1>
+                <i className="bi bi-shop" id='logoHeader'></i>
             </div>
-            <div id='userContainer'>
-                <div class="dropdown">
-                    <button class="dropbtn"><i class="bi bi-person-circle" id='userLogo'></i></button>
-                    <div class="dropdown-content">
+            <div id='userContainerHeader'>
+                <div className="dropdownHeader">
+                    <button className="dropbtnHeader"><i className="bi bi-person-circle" id='userLogoHeader'></i></button>
+                    <div className="dropdown-contentHeader">
                         <a href="#">View Perfil</a>
                         <a href="#">Preferences</a>
                         <a href="#">Sign Out</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }

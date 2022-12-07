@@ -1,23 +1,22 @@
-export default function SignIn() {
+import "./index.css"
+
+export default function LogIn() {
     return (
-        <div>
-            <h2>Sign In</h2>
-            <div>
-                <form action="" method="post">
-                    <ul>
-                        <li>
-                            <label htmlFor="name">Name:</label>
-                            <input type="text" id="userName" name="userName"/>
-                        </li>
-                        <li>
-                            <label htmlFor="name">Email:</label>
-                            <input type="email" id="userEmail" name="userEmail"/>
-                        </li>
-                    </ul>
+        <section id="containerLogIn">
+            <div id="formContainerLogIn">
+                <h2 className="center mb-5">Log In</h2>
+                <form>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email"/>
+                        <label for="inputEmail">Email</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password"/>
+                        <label for="inputPassword">Password</label>
+                    </div>
+                    <div className="center"><button type="submit" className="btn btn-primary">Log In</button></div>
                 </form>
-                <p>Dont have an acount?</p>
-                <p>Register</p>
             </div>
-        </div>
+        </section>
     )
 }
