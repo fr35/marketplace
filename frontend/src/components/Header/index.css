@@ -1,53 +1,7 @@
-#containerHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #3b5998;
-    height: 4rem;
-}
-#logoContainerHeader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#logoHeader {
-    font-size: 30px;
-    color: white;
-}
-#textLogoHeader {
-    font-size: 30px;
-    color: white;
-    margin: 0%;
-    padding-left: 40px;
-    padding-right: 5px;
-}
+
 #userLogoHeader {
     color: white;
     font-size: 30px;
-    padding-right: 100px;
 }
-.dropdownHeader {
-    position: relative;
-    display: inline-block;
-}
-.dropbtnHeader {
-    border: none;
-    background: none;
-} 
-.dropdown-contentHeader {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-.dropdown-contentHeader a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-.dropdown-contentHeader a:hover {background-color: #ddd;}
-.dropdownHeader:hover .dropdown-contentHeader {display: block;}
+
 

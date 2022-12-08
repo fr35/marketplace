@@ -1,6 +1,6 @@
 
 export default function SignUp() {
-    const container = {marginTop: '20px', border: '1px solid', padding: '50px 150px 40px 150px'}
+    const container = {marginTop: '20px', border: '1px solid', padding: '50px 200px 40px 200px'}
     const inputDate = {marginLeft: '20px'}
     const labelDate = {fontSize: '20px'}
     const logIn = {fontSize: '20px'}
