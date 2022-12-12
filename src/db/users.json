@@ -1,0 +1,18 @@
+[
+   {
+      "name": "Facundo",
+      "lastname": "Rodriguez",
+      "username": "fr35",
+      "email": "facundorodriguezgranieri@gmail.com",
+      "password": "$2b$10$xYkQOgbEDpE7nHPthsKuzO1oK3awgjFageLLPoP/GCcYXRELz.44C",
+      "id": 1
+   },
+   {
+      "name": "Facundo",
+      "lastname": "Rodriguez",
+      "username": "fr35",
+      "email": "facundorodriguezgranieri@gmail.com",
+      "password": "$2b$10$e2OkaWYwPK8zRdoMf6aB7OoXK0hQ.Uhv1Kn0Bnq4.4.gffJa8qD8G",
+      "id": 2
+   }
+]

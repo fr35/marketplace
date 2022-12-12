@@ -16,7 +16,7 @@ const init = () => {
       const user = await UserDao.getById(id)
       done(null, user)
     })
-    passport.use('/login', new LocalStrategy({
+    passport.use('login', new LocalStrategy({
       usernameField: 'email', 
       passwordField: 'password',
       passReqToCallback: true
@@ -25,7 +25,8 @@ const init = () => {
           if(!email || !password) return done(null, false)
           const user = await UserDao.getOne({email: email})
           if(!user) return done(null, false)
-          if(bCrypt.compareSync(password, user.password)) return done(null, false)
+          const checkPassword = await bCrypt.compare(password, user.password)
+          if(!checkPassword) return done(null, false)
           const userResponse = {
             id: user._id,
             email: user.email,
