@@ -44,6 +44,15 @@ class FilesystemContainer {
       console.log(error)
     }
   }
+  async getOne(options) {
+    try {
+      const elements = await this.getAll()
+      const foundElement = elements.find((options) => elements.options == options)
+      return foundElement
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   async deleteById(id) {
     try {

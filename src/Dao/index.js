@@ -3,6 +3,7 @@ import { MongoDBService, FirebaseService } from "../services/index.js";
 import { CartsMongo, CartsFilesystem, CartsMemory, CartsFirebase} from "./Cart/index.js"
 import {ProductsMongo, ProductsFilesystem, ProductsMemory, ProductsFirebase} from "./Product/index.js"
 import {MessagesMongo, MessagesFilesystem, MessagesMemory, MessagesFirebase} from "./Mesages/index.js"
+import {UserFilesystem, UserMongo} from './Users/index.js'
 
 const getSelectedDaos = () => {
     switch (config.SERVER.SELECTED_DATABASE) {
@@ -11,7 +12,8 @@ const getSelectedDaos = () => {
             return {
                 ProductDao: new ProductsMongo(),
                 CartDao: new CartsMongo(),
-                MessagesDao: new MessagesMongo()
+                MessagesDao: new MessagesMongo(),
+                UserDao: new UserMongo()
             }
         }
         case "firebase": {
@@ -19,26 +21,29 @@ const getSelectedDaos = () => {
             return {
                 ProductDao: new ProductsFirebase(),
                 CartDao: new CartsFirebase(),
-                MessagesDao: new MessagesFirebase()
+                MessagesDao: new MessagesFirebase(),
+                UserDao: new UserMongo()
             }
         }
         case "filesystem": {
             return {
                 ProductDao: new ProductsFilesystem(),
                 CartDao: new CartsFilesystem(),
-                MessagesDao: new MessagesFilesystem()
+                MessagesDao: new MessagesFilesystem(),
+                UserDao: new UserFilesystem()
             }
         }
         case "memory": {
             return {
                 ProductDao: new ProductsMemory(),
                 CartDao: new CartsMemory(),
-                MessagesDao: new MessagesMemory()
+                MessagesDao: new MessagesMemory(),
+                UserDao: new UserMongo()
             }
         }
     }
 }
 
-const {ProductDao, CartDao, MessagesDao} = getSelectedDaos()
+const {ProductDao, CartDao, MessagesDao, UserDao} = getSelectedDaos()
 
-export {ProductDao, CartDao, MessagesDao}
+export {ProductDao, CartDao, MessagesDao, UserDao}
