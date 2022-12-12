@@ -23,6 +23,13 @@ const config = {
             dbName: process.env.MONGO_DB_NAME
         }
     },
+    PASSPORT: {
+        github: {
+            clientId: process.env.CLIENT_ID_GITHUB,
+            clientSecret: process.env.CLIENT_SECRET_GITHUB,
+            callbackURL: process.env.CALLBACK_URL_GITHUB
+        }
+    }
 }
 
 export { config }

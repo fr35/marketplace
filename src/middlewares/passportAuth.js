@@ -6,6 +6,7 @@ import {Strategy as GoogleStrategy} from 'passport-google-oauth20'
 import {Strategy as TwitterStrategy} from 'passport-twitter'
 import {UserDao} from "../Dao/index.js";
 import bCrypt from "bcrypt"
+import { config } from "../config/index.js";
 
 
 const init = () => {
@@ -34,6 +35,43 @@ const init = () => {
             whislist: user.whislist
           }
           done(null, userResponse)
+      } catch (error) {
+        console.log(error);
+        done(error)
+      }
+    }))
+    passport.use('github', new GithubStrategy({
+      clientID: config.PASSPORT.github.clientId,
+      clientSecret: config.PASSPORT.github.clientSecret,
+      callbackURL: config.PASSPORT.github.callbackURL,
+      scope: ["user:email"],
+    }, async (accessToken, refreshToken, profile, done) => {
+      try {
+        const githubEmail = profile.emails?.[0].value
+        if(!githubEmail) return done(null, false)
+        const user = await UserDao.getOne({email: githubEmail})
+        if(user) {
+          const userResponse = {
+            id: user._id,
+            email: user.email,
+            cart: user.cart,
+            whislist: user.whislist
+          }
+          return done(null, userResponse)
+        }
+        const newUser = {
+          email: githubEmail,
+          name: profile._json.name,
+          lastname: "-",
+        }
+        const createdUser = await UserDao.save(newUser)
+        const userResponse = {
+          id: createdUser._id,
+          email: createdUser.email,
+          cart: createdUser.cart,
+          whislist: createdUser.whislist,
+        }
+        done(null, userResponse);
       } catch (error) {
         console.log(error);
         done(error)
