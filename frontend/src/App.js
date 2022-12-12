@@ -9,7 +9,7 @@ import SignUp from './pages/SignUp';
 function App() {
   return (
     <div>
-      <SignUp></SignUp>
+      <Home></Home>
     </div>
   );
 }

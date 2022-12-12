@@ -1,0 +1,31 @@
+.productCard {
+    background-color: white;
+    height: 485px;
+    max-width: 284px;
+    min-width: 284px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+}
+.productCard:hover {
+    box-shadow: 1px 1px 10px 0px;
+}
+.productCardImg {
+    height: 284px;
+    width: 100%;
+}
+.productCardBody {
+    margin-left: 20px;
+    margin-top: 20px;
+    
+}
+.productCardPrice {
+
+}
+.productCardTitle {
+
+}
+hr {
+    padding: 0;
+    margin: 0;
+}

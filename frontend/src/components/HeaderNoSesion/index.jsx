@@ -1,13 +1,15 @@
-import "../Header/index.css"
+import "../Header/header.css"
 
 export default function HeaderNoSesion() {
-    const container = {backgroundColor: '#3b5998', boxShadow: '0px 1px 10px 0px', paddingTop: '1vh', paddingBottom: '1vh'}
-    const logo = {fontSize: '25px', color: 'white'}
     return (
-        <header style={container}>
-            <div className="d-flex justify-content-start align-items-center ps-5">
-                <h1 className="pe-1 m-0" style={logo}>Marketplace</h1>
-                <i className="bi bi-shop" style={logo}></i>
+        <header className="container-fluid header">
+            <div className="row">
+            <div className="col center">
+                <h1 className="pe-1 m-0 icon">Marketplace</h1>
+                <i className="bi bi-shop icon"></i>
+            </div>
+            <div className="col"></div>
+            <div className="col"></div>
             </div>
         </header>
     )
