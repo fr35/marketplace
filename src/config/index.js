@@ -33,6 +33,16 @@ const config = {
             apiKey: process.env.API_KEY_TWITTER,
             apiKeySecret: process.env.API_KEY_SECRET_TWITTER,
             callbackURL: process.env.CALLBACK_URL_TWITTER
+        },
+        facebook: {
+            clientId: process.env.CLIENT_ID_FACEBOOK,
+            clientSecret: process.env.CLIENT_SECRET_FACEBOOK,
+            callbackURL: process.env.CALLBACK_URL_FACEBOOK,
+        },
+        google: {
+            clientId: process.env.CLIENT_ID_GOOGLE,
+            clientSecret: process.env.CLIENT_SECRET_GOOGLE,
+            callbackURL: process.env.CALLBACK_URL_GOOGLE,
         }
     }
 }

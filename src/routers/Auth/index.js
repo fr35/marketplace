@@ -50,13 +50,13 @@ router.get("/twitter/callback", passport.authenticate("twitter"), (req, res) => 
 router.get('/facebook-login', passport.authenticate('facebook'), (req,res) => {
     res.send("facebook busca el perfil");
 })
-router.get("/facebook", passport.authenticate("facebook"), (req, res) => {
+router.get("/facebook/callback", passport.authenticate("facebook"), (req, res) => {
     res.send(req.user);
 });
 router.get('/google-login', passport.authenticate('google'), (req,res) => {
     res.send("google busca el perfil");
 })
-router.get("/google", passport.authenticate("google"), (req, res) => {
+router.get("/google/callback", passport.authenticate("google"), (req, res) => {
     res.send(req.user);
 });
 router.get('/apple-login', passport.authenticate('apple'), (req,res) => {

@@ -117,6 +117,59 @@ const init = () => {
         cb(error)
       }
     }))
+
+    passport.use('facebook', new FacebookStrategy({
+      clientID: config.PASSPORT.facebook.clientId,
+      clientSecret: config.PASSPORT.facebook.clientSecret,
+      callbackURL: config.PASSPORT.facebook.callbackURL
+    }, async (accessToken, refreshToken, profile, cb) => {
+      try {
+        console.log(profile);
+        
+      } catch (error) {
+        
+      }
+    }))
+
+    passport.use('google', new GoogleStrategy({
+      clientID: config.PASSPORT.google.clientId,
+      clientSecret: config.PASSPORT.google.clientSecret,
+      callbackURL: config.PASSPORT.google.callbackURL,
+      scope: ['https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email']
+    }, async (accessToken, refreshToken, profile, cb) => {
+      try {
+        console.log(profile);
+        const facebookEmail = profile.emails?.[0].value
+        if(!facebookEmail) return done(null, false)
+        const user = await UserDao.getOne({email: facebookEmail})
+        if(user) {
+          const userResponse = {
+            id: user._id,
+            email: user.email,
+            cart: user.cart,
+            whislist: user.whislist
+          }
+          return done(null, userResponse)
+        }
+        const newUser = {
+          email: facebookEmail,
+          name: profile._json.name,
+          lastname: "-",
+          username: "-"
+        }
+        const createdUser = await UserDao.save(newUser)
+        const userResponse = {
+          id: createdUser._id,
+          email: createdUser.email,
+          cart: createdUser.cart,
+          whislist: createdUser.whislist,
+        }
+        done(null, userResponse);
+      } catch (error) {
+        
+      }
+    }))
 }
 
 export const PassportAuth = {
