@@ -28,6 +28,11 @@ const config = {
             clientId: process.env.CLIENT_ID_GITHUB,
             clientSecret: process.env.CLIENT_SECRET_GITHUB,
             callbackURL: process.env.CALLBACK_URL_GITHUB
+        },
+        twitter: {
+            apiKey: process.env.API_KEY_TWITTER,
+            apiKeySecret: process.env.API_KEY_SECRET_TWITTER,
+            callbackURL: process.env.CALLBACK_URL_TWITTER
         }
     }
 }

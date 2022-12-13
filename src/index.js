@@ -23,7 +23,7 @@ app.use(cors({origin: "http://localhost:3000"}))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"))
 
-app.use('/api/auth', AuthRouter)
+app.use('/auth', AuthRouter)
 app.use("/api/products", ProductRouter)
 app.use("/api/cart", CartRouter)
 app.use('/logs', SessionRouter)

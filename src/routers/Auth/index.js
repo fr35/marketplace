@@ -33,10 +33,36 @@ router.post('/signup', async (req,res) => {
 router.post("/", passport.authenticate("login"), async (req, res) => {
     res.send({ success: true, message: "Logueado!", user: req.user });
 });
+
 router.get("/github-login", passport.authenticate("github"), (req, res) => {
     res.send("github busca el perfil");
 });
 router.get("/github", passport.authenticate("github"), (req, res) => {
+    res.send(req.user);
+});
+
+router.get('/twitter-login', passport.authenticate('twitter'), (req,res) => {
+    res.send("twitter busca el perfil");
+})
+router.get("/twitter/callback", passport.authenticate("twitter"), (req, res) => {
+    res.send(req.user);
+});
+router.get('/facebook-login', passport.authenticate('facebook'), (req,res) => {
+    res.send("facebook busca el perfil");
+})
+router.get("/facebook", passport.authenticate("facebook"), (req, res) => {
+    res.send(req.user);
+});
+router.get('/google-login', passport.authenticate('google'), (req,res) => {
+    res.send("google busca el perfil");
+})
+router.get("/google", passport.authenticate("google"), (req, res) => {
+    res.send(req.user);
+});
+router.get('/apple-login', passport.authenticate('apple'), (req,res) => {
+    res.send("apple busca el perfil");
+})
+router.get("/apple", passport.authenticate("apple"), (req, res) => {
     res.send(req.user);
 });
 

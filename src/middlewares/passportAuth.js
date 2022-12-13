@@ -40,6 +40,7 @@ const init = () => {
         done(error)
       }
     }))
+
     passport.use('github', new GithubStrategy({
       clientID: config.PASSPORT.github.clientId,
       clientSecret: config.PASSPORT.github.clientSecret,
@@ -75,6 +76,45 @@ const init = () => {
       } catch (error) {
         console.log(error);
         done(error)
+      }
+    }))
+
+    passport.use('twitter', new TwitterStrategy({
+      consumerKey: config.PASSPORT.twitter.apiKey,
+      consumerSecret: config.PASSPORT.twitter.apiKeySecret,
+      callbackURL: config.PASSPORT.twitter.callbackURL,
+      includeEmail: true
+    }, async (token, tokenSecret, profile, cb) => {
+      try {
+        const twitterEmail = profile.emails[0].value
+        if(!twitterEmail) return done(null, false)
+        const user = await UserDao.getOne({email: twitterEmail})
+        if(user) {
+          const userResponse = {
+            id: user._id,
+            email: user.email,
+            cart: user.cart,
+            whislist: user.whislist
+          }
+          return done(null, userResponse)
+        }
+        const newUser = {
+          email: twitterEmail,
+          name: profile._json.name,
+          username: profile.username,
+          lastname: "-",
+        }
+        const createdUser = await UserDao.save(newUser)
+        const userResponse = {
+          id: createdUser._id,
+          email: createdUser.email,
+          cart: createdUser.cart,
+          whislist: createdUser.whislist,
+        }
+        cb(null, userResponse);
+      } catch (error) {
+        console.log(error);
+        cb(error)
       }
     }))
 }
