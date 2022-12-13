@@ -4,6 +4,7 @@ import { Strategy as GithubStrategy } from "passport-github2";
 import { Strategy as FacebookStrategy } from "passport-facebook"
 import {Strategy as GoogleStrategy} from 'passport-google-oauth20'
 import {Strategy as TwitterStrategy} from 'passport-twitter'
+
 import {UserDao} from "../Dao/index.js";
 import bCrypt from "bcrypt"
 import { config } from "../config/index.js";
@@ -31,6 +32,7 @@ const init = () => {
           const userResponse = {
             id: user._id,
             email: user.email,
+            username: user.username,
             cart: user.cart,
             whislist: user.whislist
           }
@@ -55,6 +57,7 @@ const init = () => {
           const userResponse = {
             id: user._id,
             email: user.email,
+            username: user.username,
             cart: user.cart,
             whislist: user.whislist
           }
@@ -64,11 +67,13 @@ const init = () => {
           email: githubEmail,
           name: profile._json.name,
           lastname: "-",
+          username: profile.username
         }
         const createdUser = await UserDao.save(newUser)
         const userResponse = {
           id: createdUser._id,
           email: createdUser.email,
+          username: createdUser.username,
           cart: createdUser.cart,
           whislist: createdUser.whislist,
         }
@@ -86,17 +91,18 @@ const init = () => {
       includeEmail: true
     }, async (token, tokenSecret, profile, cb) => {
       try {
-        const twitterEmail = profile.emails[0].value
-        if(!twitterEmail) return done(null, false)
+        const twitterEmail = profile.emails?.[0].value
+        if(!twitterEmail) return cb(null, false)
         const user = await UserDao.getOne({email: twitterEmail})
         if(user) {
           const userResponse = {
             id: user._id,
             email: user.email,
+            username: user.username,
             cart: user.cart,
             whislist: user.whislist
           }
-          return done(null, userResponse)
+          return cb(null, userResponse)
         }
         const newUser = {
           email: twitterEmail,
@@ -108,12 +114,13 @@ const init = () => {
         const userResponse = {
           id: createdUser._id,
           email: createdUser.email,
+          username: createdUser.username,
           cart: createdUser.cart,
           whislist: createdUser.whislist,
         }
-        cb(null, userResponse);
+        cb(null, userResponse)
       } catch (error) {
-        console.log(error);
+        console.log(error)
         cb(error)
       }
     }))
@@ -121,14 +128,10 @@ const init = () => {
     passport.use('facebook', new FacebookStrategy({
       clientID: config.PASSPORT.facebook.clientId,
       clientSecret: config.PASSPORT.facebook.clientSecret,
-      callbackURL: config.PASSPORT.facebook.callbackURL
+      callbackURL: config.PASSPORT.facebook.callbackURL,
+      passReqToCallback: true
     }, async (accessToken, refreshToken, profile, cb) => {
-      try {
-        console.log(profile);
-        
-      } catch (error) {
-        
-      }
+      console.log(profile);
     }))
 
     passport.use('google', new GoogleStrategy({
@@ -139,35 +142,36 @@ const init = () => {
       'https://www.googleapis.com/auth/userinfo.email']
     }, async (accessToken, refreshToken, profile, cb) => {
       try {
-        console.log(profile);
-        const facebookEmail = profile.emails?.[0].value
-        if(!facebookEmail) return done(null, false)
-        const user = await UserDao.getOne({email: facebookEmail})
+        const googleEmail = profile.emails?.[0].value
+        if(!googleEmail) return cb(null, false)
+        const user = await UserDao.getOne({email: googleEmail})
         if(user) {
           const userResponse = {
             id: user._id,
             email: user.email,
+            username: user.username,
             cart: user.cart,
             whislist: user.whislist
           }
-          return done(null, userResponse)
+          return cb(null, userResponse)
         }
         const newUser = {
-          email: facebookEmail,
-          name: profile._json.name,
-          lastname: "-",
-          username: "-"
+          email: googleEmail,
+          name: profile._json.given_name,
+          lastname: profile._json.family_name,
         }
         const createdUser = await UserDao.save(newUser)
         const userResponse = {
           id: createdUser._id,
           email: createdUser.email,
+          username: createdUser.username,
           cart: createdUser.cart,
           whislist: createdUser.whislist,
         }
-        done(null, userResponse);
+        cb(null, userResponse);
       } catch (error) {
-        
+        console.log(error)
+        cb(error)
       }
     }))
 }

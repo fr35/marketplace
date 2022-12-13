@@ -37,7 +37,7 @@ router.post("/", passport.authenticate("login"), async (req, res) => {
 router.get("/github-login", passport.authenticate("github"), (req, res) => {
     res.send("github busca el perfil");
 });
-router.get("/github", passport.authenticate("github"), (req, res) => {
+router.get("/github/callback", passport.authenticate("github"), (req, res) => {
     res.send(req.user);
 });
 
