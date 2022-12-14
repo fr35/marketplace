@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"))
 
 app.use('/auth', AuthRouter)
-app.use("/api/products", ProductRouter)
-app.use("/api/cart", CartRouter)
+app.use("/products", ProductRouter)
+app.use("/cart", CartRouter)
 app.use('/logs', SessionRouter)
 
 const server = app.listen(config.SERVER.PORT, () =>

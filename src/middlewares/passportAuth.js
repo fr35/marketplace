@@ -4,6 +4,7 @@ import { Strategy as GithubStrategy } from "passport-github2";
 import { Strategy as FacebookStrategy } from "passport-facebook"
 import {Strategy as GoogleStrategy} from 'passport-google-oauth20'
 import {Strategy as TwitterStrategy} from 'passport-twitter'
+import { Strategy as AppleStrategy } from "passport-apple";
 
 import {UserDao} from "../Dao/index.js";
 import bCrypt from "bcrypt"
@@ -129,9 +130,41 @@ const init = () => {
       clientID: config.PASSPORT.facebook.clientId,
       clientSecret: config.PASSPORT.facebook.clientSecret,
       callbackURL: config.PASSPORT.facebook.callbackURL,
-      passReqToCallback: true
+      profileFields: ['id', 'emails', 'name']
     }, async (accessToken, refreshToken, profile, cb) => {
-      console.log(profile);
+      try {
+        const facebookEmail = profile._json.email
+        if(!facebookEmail) return cb(null, false)
+        const user = await UserDao.getOne({email: facebookEmail})
+        if(user) {
+          const userResponse = {
+            id: user._id,
+            email: user.email,
+            username: user.username,
+            cart: user.cart,
+            whislist: user.whislist
+          }
+          return cb(null, userResponse)
+        }
+        const newUser = {
+          email: facebookEmail,
+          name: profile._json.first_name,
+          lastname: profile._json.last_name,
+          username: '-',
+        }
+        const createdUser = await UserDao.save(newUser)
+        const userResponse = {
+          id: createdUser._id,
+          email: createdUser.email,
+          username: createdUser.username,
+          cart: createdUser.cart,
+          whislist: createdUser.whislist,
+        }
+        cb(null, userResponse)
+      } catch (error) {
+        console.log(error)
+        cb(error)
+      }
     }))
 
     passport.use('google', new GoogleStrategy({
