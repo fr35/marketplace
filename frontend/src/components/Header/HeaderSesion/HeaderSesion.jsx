@@ -1,6 +1,6 @@
 import './header.css'
 
-export default function Header() {
+export default function HeaderSesion() {
     return (
         <header className='container-fluid header'>
             <div className="row">
