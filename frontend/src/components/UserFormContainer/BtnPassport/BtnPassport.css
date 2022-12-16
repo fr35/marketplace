@@ -1,0 +1,22 @@
+.Btn {
+    width: 280px;
+    height: 55px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+}
+.btnIcon {
+    height: 30px;
+}
+.twitterIcon {
+    height: 25px;
+}
+.facebookIcon {
+    height: 28px;
+    margin-left: 22px;
+}
