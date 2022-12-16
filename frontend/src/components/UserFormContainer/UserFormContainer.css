@@ -1,8 +1,12 @@
 .LogInForm {
     background-color: white;
-    padding: 20px 100px 20px 100px;
+    padding: 20px 150px 50px 150px;
 }
 .SignUpForm {
     background-color: white;
     padding: 20px 100px 20px 100px;
+}
+
+.bottom {
+    padding-bottom: 500px;
 }

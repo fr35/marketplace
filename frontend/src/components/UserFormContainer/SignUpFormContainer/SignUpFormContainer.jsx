@@ -5,15 +5,14 @@ import TwitterBtn from "../BtnPassport/TwitterBtn/TwitterBtn"
 import SignUpForm from "../SignUpForm/SignUpForm"
 import '../UserFormContainer.css'
 export default function SignUpFormContainer() {
-    const logIn = {fontSize: '20px'}
     return (
-        <main className="main pt-5">
+        <main className="main pt-5 bottom">
             <section className='container-fluid d-flex justify-content-around'>
                     <div className="SignUpForm">
                         <h2 className="center">Sign Up</h2>
                         <SignUpForm></SignUpForm>
                         <hr className="mb-3"/>
-                        <p className="d-flex justify-content-center" style={logIn}>Have an acount? Log In</p>
+                        <p className="d-flex justify-content-center fs-5">Have an acount? Log In</p>
                     </div>
                     <div className="center">
                         <div className="">
