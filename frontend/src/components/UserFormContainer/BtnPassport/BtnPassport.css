@@ -1,7 +1,7 @@
 .Btn {
     width: 300px;
-    height: 55px;
-    border-radius: 15px;
+    height: 45px;
+    border-radius: 20px;
     border: none;
     outline: none;
     background-color: white;
@@ -11,7 +11,7 @@
     position: relative;
 }
 .btnIcon {
-    height: 30px;
+    height: 25px;
 }
 .twitterIcon {
     height: 25px;

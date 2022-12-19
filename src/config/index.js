@@ -44,7 +44,7 @@ const config = {
             clientSecret: process.env.CLIENT_SECRET_GOOGLE,
             callbackURL: process.env.CALLBACK_URL_GOOGLE,
         }
-    }
+    },
 }
 
 export { config }

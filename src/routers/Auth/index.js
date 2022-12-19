@@ -2,10 +2,10 @@ import { Router } from "express";
 import passport from "passport";
 import {UserDao} from '../../Dao/index.js'
 import bCrypt from "bcrypt";
+import {JWT_UTILS} from '../../utils/index.js'
 
 
 const router = Router()
-
 
 router.post('/signup', async (req,res) => {
     try {
@@ -31,6 +31,9 @@ router.post('/signup', async (req,res) => {
 })
 
 router.post("/", passport.authenticate("login"), async (req, res) => {
+    const {user} = req
+    const token = JWT_UTILS.createToken(user, 'secret')
+    res.cookie('tokenUserCookie', token, {maxAge: 3600000})
     res.send({ success: true, message: "Logueado!", user: req.user });
 });
 
@@ -38,32 +41,44 @@ router.get("/github-login", passport.authenticate("github"), (req, res) => {
     res.send("github busca el perfil");
 });
 router.get("/github/callback", passport.authenticate("github"), (req, res) => {
-    res.send(req.user);
+    const {user} = req
+    const token = JWT_UTILS.createToken(user, 'secret')
+    res.cookie('tokenUserCookie', token, {maxAge: 3600000})
+    res.send();
 });
 
 router.get('/twitter-login', passport.authenticate('twitter'), (req,res) => {
     res.send("twitter busca el perfil");
 })
 router.get("/twitter/callback", passport.authenticate("twitter"), (req, res) => {
+    const {user} = req
+    const token = JWT_UTILS.createToken(user, 'secret')
+    res.cookie('tokenUserCookie', token, {maxAge: 3600000})
     res.send(req.user);
 });
 router.get('/facebook-login', passport.authenticate('facebook', {scope: ['email', 'public_profile']}), (req,res) => {
     res.send("facebook busca el perfil");
 })
 router.get("/facebook/callback", passport.authenticate("facebook"), (req, res) => {
+    const {user} = req
+    const token = JWT_UTILS.createToken(user, 'secret')
+    res.cookie('tokenUserCookie', token, {maxAge: 3600000})
     res.send(req.user)
 });
 router.get('/google-login', passport.authenticate('google'), (req,res) => {
     res.send("google busca el perfil");
 })
 router.get("/google/callback", passport.authenticate("google"), (req, res) => {
+    const {user} = req
+    const token = JWT_UTILS.createToken(user, 'secret')
+    res.cookie('tokenUserCookie', token, {maxAge: 3600000})
     res.send(req.user);
 });
-router.get('/apple-login', passport.authenticate('apple'), (req,res) => {
-    res.send("apple busca el perfil");
+
+router.post('/logout', (req, res) => {
+    req.session.destroy()
+    res.cookie('tokenUserCookie', '')
+    res.send({success: true})
 })
-router.get("/apple", passport.authenticate("apple"), (req, res) => {
-    res.send(req.user);
-});
 
 export {router as AuthRouter}

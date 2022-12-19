@@ -7,12 +7,14 @@ import {products, items} from "./faker/index.js"
 import {sessions} from "./session/index.js"
 import {PassportAuth} from './middlewares/index.js'
 import passport from "passport";
+import cookieParser from "cookie-parser"
 
 const app = express()
 app.use(express.json())
 
 PassportAuth.init()
 
+app.use(cookieParser)
 app.use(sessions.mongo)
 app.use(passport.initialize())
 app.use(passport.session())

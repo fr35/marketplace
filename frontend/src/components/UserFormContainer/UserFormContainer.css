@@ -1,12 +1,21 @@
 .LogInForm {
     background-color: white;
-    padding: 20px 150px 50px 150px;
+    padding: 30px 0px 50px 0px;
+    margin: 0px 30px 0px 30px;
 }
 .SignUpForm {
     background-color: white;
-    padding: 20px 100px 20px 100px;
+    padding: 30px 0px 50px 0px;
+    margin: 0px 30px 0px 30px;
+}
+.spaceFormContainer{
+    padding: 40px 0px 500px 0px;
 }
 
-.bottom {
-    padding-bottom: 500px;
+.or {
+    color: gray;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 100%;
 }

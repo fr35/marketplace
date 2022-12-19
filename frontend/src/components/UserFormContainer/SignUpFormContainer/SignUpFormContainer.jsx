@@ -6,21 +6,26 @@ import SignUpForm from "../SignUpForm/SignUpForm"
 import '../UserFormContainer.css'
 export default function SignUpFormContainer() {
     return (
-        <main className="main pt-5 bottom">
-            <section className='container-fluid d-flex justify-content-around'>
-                    <div className="SignUpForm">
-                        <h2 className="center">Sign Up</h2>
+        <main className="main spaceFormContainer">
+            <section className='container-fluid'>
+                    <div className="d-flex justify-content-around SignUpForm">
+                    <div className="w-25 mt-5 ms-5">
                         <SignUpForm></SignUpForm>
                         <hr className="mb-3"/>
-                        <p className="d-flex justify-content-center fs-5">Have an acount? Log In</p>
+                        <p className="center fs-5">Have an acount? Log In</p>
                     </div>
-                    <div className="center">
-                        <div className="">
+                    <div className="">
+                        <h2>Sign Up</h2>
+                        <p className="or">Or</p>
+                    </div>
+                    <div className="center mb-5 pb-4 me-5">
+                        <div>
                             <FacebookBtn></FacebookBtn>
                             <GoogleBtn></GoogleBtn>
                             <TwitterBtn></TwitterBtn>
                             <GithubBtn></GithubBtn>
                         </div>
+                    </div>
                     </div>
             </section>
         </main>

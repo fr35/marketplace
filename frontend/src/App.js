@@ -1,7 +1,6 @@
 import './App.css';
-import HeaderSesion from './components/Header/HeaderSesion/HeaderSesion';
-import ProductsListContainer from './components/ProductsListContainer/ProductsListContainer/ProductsListContainer';
 import LogInPage from './pages/LogIn/LogInPage';
+import ProductsContainer from './pages/ProductsContainer/ProductsContainer';
 import SignUpPage from './pages/SignUp/SignUpPage';
 
 
@@ -12,7 +11,7 @@ import SignUpPage from './pages/SignUp/SignUpPage';
 function App() {
   return (
     <>
-      <SignUpPage></SignUpPage>
+      <ProductsContainer></ProductsContainer>
     </>
   );
 }
