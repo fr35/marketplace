@@ -4,7 +4,6 @@ import { Strategy as GithubStrategy } from "passport-github2";
 import { Strategy as FacebookStrategy } from "passport-facebook"
 import {Strategy as GoogleStrategy} from 'passport-google-oauth20'
 import {Strategy as TwitterStrategy} from 'passport-twitter'
-import { Strategy as AppleStrategy } from "passport-apple";
 
 import {UserDao} from "../Dao/index.js";
 import bCrypt from "bcrypt"

@@ -30,55 +30,53 @@ router.post('/signup', async (req,res) => {
     }
 })
 
-router.post("/", passport.authenticate("login"), async (req, res) => {
+router.post("/login", passport.authenticate("login"), async (req, res) => {
     const {user} = req
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
-    res.send({ success: true, message: "Logueado!", user: req.user });
+    res.send({ success: true});
 });
 
-router.get("/github-login", passport.authenticate("github"), (req, res) => {
-    res.send("github busca el perfil");
-});
+router.get("/github-login", passport.authenticate("github"))
+
 router.get("/github/callback", passport.authenticate("github"), (req, res) => {
     const {user} = req
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
-    res.send();
+    res.send({ success: true});
 });
 
-router.get('/twitter-login', passport.authenticate('twitter'), (req,res) => {
-    res.send("twitter busca el perfil");
-})
+router.get('/twitter-login', passport.authenticate('twitter'))
+
 router.get("/twitter/callback", passport.authenticate("twitter"), (req, res) => {
     const {user} = req
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
-    res.send(req.user);
-});
-router.get('/facebook-login', passport.authenticate('facebook', {scope: ['email', 'public_profile']}), (req,res) => {
-    res.send("facebook busca el perfil");
+    res.send({ success: true});
 })
+
+router.get('/facebook-login', passport.authenticate('facebook', {scope: ['email', 'public_profile']}))
+
 router.get("/facebook/callback", passport.authenticate("facebook"), (req, res) => {
     const {user} = req
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
-    res.send(req.user)
-});
-router.get('/google-login', passport.authenticate('google'), (req,res) => {
-    res.send("google busca el perfil");
+    res.send({ success: true})
 })
+
+router.get('/google-login', passport.authenticate('google'))
+
 router.get("/google/callback", passport.authenticate("google"), (req, res) => {
     const {user} = req
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
-    res.send(req.user);
-});
-
-router.post('/logout', (req, res) => {
-    req.session.destroy()
-    res.cookie('tokenUserCookie', '')
-    res.send({success: true})
+    res.send({ success: true});
 })
+
+router.post("/logout", (req, res) => {
+    req.session.destroy();
+    res.clearCookie("tokenUserCookie");
+    res.send({ success: true });
+});
 
 export {router as AuthRouter}

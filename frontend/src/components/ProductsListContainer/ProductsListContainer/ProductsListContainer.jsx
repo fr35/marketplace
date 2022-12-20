@@ -8,12 +8,11 @@ export default function ProductsListContainer() {
     const [products, setProducts] = useState([])
     const getAllProducts = useCallback( async () => {
         setTimeout( async () => {
-            const response = await axios.get('http://localhost:8080/products')
+            const response = await axios.get('http://localhost:8080/products', {withCredentials: true})
             setProducts(response.data)
         }, 2000);
     }, [])
     window.addEventListener('load', getAllProducts)
-    
     return (
         <main className="main container-fluid">
             {products.length === 0 ? (

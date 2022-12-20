@@ -1,8 +1,8 @@
 import './App.css';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import LogInPage from './pages/LogIn/LogInPage';
-import ProductsContainer from './pages/ProductsContainer/ProductsContainer';
+import Home from './pages/Home/Home';
 import SignUpPage from './pages/SignUp/SignUpPage';
-
 
 
 
@@ -10,9 +10,13 @@ import SignUpPage from './pages/SignUp/SignUpPage';
 
 function App() {
   return (
-    <>
-      <ProductsContainer></ProductsContainer>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<LogInPage/>}/>
+        <Route path='/signup' element={<SignUpPage/>}/>
+        <Route path='/products' element={<Home/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
