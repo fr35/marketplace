@@ -8,7 +8,9 @@ import WishListIcon from '../WishListIcon/WishListIcon'
 export default function HeaderSesion() {
     return (
         <header className='container-fluid header d-flex justify-content-between'>
-            <Logo></Logo>
+            <div className='divLogo'>
+                <Logo></Logo>
+            </div>
             <SearchInput></SearchInput>
                 <div className="center">
                     <ChatIcon></ChatIcon>

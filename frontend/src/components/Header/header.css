@@ -1,7 +1,11 @@
 .header {
     background-color: #3b5998;
     box-shadow: 0px 0px 10px 0px;
-    height: 8vh;
+    height: 7vh;
+}
+.divLogo {
+    padding-left: 4%;
+    align-self: center;
 }
 .icon {
     color: white;
