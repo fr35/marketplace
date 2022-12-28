@@ -1,18 +1,19 @@
-
+import { Link } from "react-router-dom";
 
 export default function ProductCard({id, title, description, thumbnail, price, stock}) {
     return (
-        <div className="mb-5 productContainer row">
+        <div className="productContainer row">
             <div className="col-2">
-                <img src={thumbnail} alt={title} className='cardImage'/>
+                <Link><img src={thumbnail} alt={title} className='cardImage'/></Link>
             </div>
-            <div className="col-10 ps-5">
-                <div className="mt-2">
-                    <h2 className="text">{title}</h2>
-                    <p className="textSecondary">Vendido por Nombre del usuario y link al perfil</p>
-                    <h2 className="text textPrice">$ {price}</h2>
+            <div className="col-10">
+                <div className="mt-2 ms-5">
+                    <Link className="link" to={`/products/${id}`}><h2 className="text">{title}</h2></Link>
+                    <Link className="link"><p className="textSecondary">Vendido por <span className="userProductSeller">Usuario</span></p></Link>
+                    <Link className="link" to={`/products/${id}`}><h2 className="text textPrice">$ {price}</h2></Link>
                 </div>
             </div>
+            <hr className="mt-3"/>
         </div>
     )
 }

@@ -43,7 +43,7 @@ router.get("/github/callback", passport.authenticate("github"), (req, res) => {
     const {user} = req
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
-    res.send({ success: true});
+    res.redirect('http://localhost:3000/products')
 });
 
 router.get('/twitter-login', passport.authenticate('twitter'))
@@ -53,6 +53,7 @@ router.get("/twitter/callback", passport.authenticate("twitter"), (req, res) => 
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
     res.send({ success: true});
+    res.redirect('http://localhost:3000/products')
 })
 
 router.get('/facebook-login', passport.authenticate('facebook', {scope: ['email', 'public_profile']}))
@@ -62,6 +63,7 @@ router.get("/facebook/callback", passport.authenticate("facebook"), (req, res) =
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
     res.send({ success: true})
+    res.redirect('http://localhost:3000/products')
 })
 
 router.get('/google-login', passport.authenticate('google'))
@@ -71,6 +73,7 @@ router.get("/google/callback", passport.authenticate("google"), (req, res) => {
     const token = JWT_UTILS.createToken(user, 'secret')
     res.cookie('tokenUserCookie', token, {maxAge: 3600000})
     res.send({ success: true});
+    res.redirect('http://localhost:3000/products')
 })
 
 router.post("/logout", (req, res) => {

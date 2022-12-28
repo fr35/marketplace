@@ -5,7 +5,6 @@ import LogInFormContainer from "../../components/UserFormContainer/LogInFormCont
 export default function LogInPage() {
     return (
         <>
-            <HeaderNoSesion></HeaderNoSesion>
             <LogInFormContainer></LogInFormContainer>
         </>
     )

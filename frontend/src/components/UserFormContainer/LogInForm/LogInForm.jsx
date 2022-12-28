@@ -25,7 +25,7 @@ export default function LogInForm() {
   );
   return (
     <form onSubmit={userLogInSubmit}>
-      <div className="mb-3">
+      <div className="mb-2 mt-1">
         <input
           className="form-control"
           type="text"
@@ -41,7 +41,7 @@ export default function LogInForm() {
           value={logInData.email}
         />
       </div>
-      <div className="mb-3">
+      <div className="mb-2">
         <input
           className="form-control"
           type="password"
@@ -57,7 +57,7 @@ export default function LogInForm() {
           value={logInData.password}
         />
       </div>
-      <div className="d-flex justify-content-center mb-4">
+      <div className="d-flex justify-content-center mb-3">
         <input type="submit" value="Log In" className="btn btn-primary" />
       </div>
     </form>

@@ -3,20 +3,19 @@ import axios from 'axios'
 import { Ring } from '@uiball/loaders'
 import ProductsList from "../ProductsList/ProductsList";
 import '../ProductsListContainer.css'
+import ProductsFilter from "../ProductsFilter/ProductsFilter";
 
 export default function ProductsListContainer() {
     const [products, setProducts] = useState([])
     const getAllProducts = useCallback( async () => {
-        setTimeout( async () => {
-            const response = await axios.get('http://localhost:8080/products', {withCredentials: true})
-            setProducts(response.data)
-        }, 2000);
+        const response = await axios.get('http://localhost:8080/products', {withCredentials: true})
+        setProducts(response.data)
     }, [])
     window.addEventListener('load', getAllProducts)
     return (
-        <main className="main container-fluid">
+        <main className="main mainProductsListContainer">
             {products.length === 0 ? (
-                <div className="center">
+                <div className="center ringContainer">
                     <div className="ring">
                         <Ring 
                             size={50}
@@ -27,7 +26,7 @@ export default function ProductsListContainer() {
                     </div>
                 </div> ) : 
                 <div className="row">
-                    <div className="col-3 mt-5"></div>
+                    <div className="col-3 mt-5"><ProductsFilter></ProductsFilter></div>
                     <div className="col-9 mt-5">
                         <ProductsList products={products}></ProductsList>
                     </div>

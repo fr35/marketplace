@@ -1,0 +1,49 @@
+.sectionProductDetail {background-color: white; padding: 30px 10px 500px 10px; width: 98%;}
+.sectionProductDetail:after {content: ""; display: table; clear: both;}
+.imageDetailSection {float: left;width: 60%;}
+.productTextSection {float: left;width: 40%;}
+
+.containerImageDetail::after {content: ""; display: table; clear: both;}
+.imgMiniature {width: 5%; float: left;}
+.imgMain {width: 95%; padding-left: 30px; float: left;}
+.imgDetailMiniature {height: 60px; width: 60px;}
+.containerImgMiniature {display: block;}
+.containerImageDetail {position: relative;}
+.imgDetail {height: 468px;width: 668px;}
+
+.ProductDetailTextContainer {
+    border: rgb(204, 204, 204) 1px solid;
+    border-radius: 5px;
+    padding: 10px 0px 50px 10px;
+}
+.conditionProduct {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+.detailTextTitle {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.18;
+    hyphens: auto;
+    word-break: break-word;
+}
+.btnHeart {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0px 7px 0px 0px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.iconHeart {
+    font-size: 22px;
+}
+.productPrice {
+    font-size: 36px;
+    font-weight: 300;
+}
+
+

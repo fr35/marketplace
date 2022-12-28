@@ -7,12 +7,12 @@ import WishListIcon from '../WishListIcon/WishListIcon'
 
 export default function HeaderSesion() {
     return (
-        <header className='container-fluid header d-flex justify-content-between'>
+        <header className=' header d-flex justify-content-between'>
             <div className='divLogo'>
                 <Logo></Logo>
             </div>
             <SearchInput></SearchInput>
-                <div className="center">
+                <div className="center pe-3">
                     <ChatIcon></ChatIcon>
                     <WishListIcon></WishListIcon>
                     <CartIcon></CartIcon>

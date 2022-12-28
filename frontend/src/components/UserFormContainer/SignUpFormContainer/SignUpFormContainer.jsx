@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 
 export default function SignUpFormContainer() {
     return (
-        <main className="main userFormContainer">
+        <main className="main userFormContainer userFormContainerSignUp text-white">
             <section className='userFormSection'>
                 <div>
                     <h2 className="userFormTitle">Sign Up</h2>
@@ -17,7 +17,7 @@ export default function SignUpFormContainer() {
                 <div className="d-flex justify-content-between">
                     <div className="divUserForm w-25">
                         <SignUpForm></SignUpForm>
-                        <hr className="mb-3"/>
+                        <hr className="mb-2"/>
                         <p className="center fs-5">Have an acount? &nbsp;<Link to={'/'}>Log In</Link></p>
                     </div>
                     <div className="divUserButtons">

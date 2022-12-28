@@ -5,7 +5,6 @@ import SignUpFormContainer from "../../components/UserFormContainer/SignUpFormCo
 export default function SignUpPage() {
     return (
         <>
-            <HeaderNoSesion></HeaderNoSesion>
             <SignUpFormContainer></SignUpFormContainer>
         </>
     )

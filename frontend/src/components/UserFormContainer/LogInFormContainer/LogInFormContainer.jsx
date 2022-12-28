@@ -8,22 +8,22 @@ import "../UserFormContainer.css";
 
 export default function LogInFormContainer() {
   return (
-    <main className="main userFormContainer">
+    <main className="main userFormContainer userFormContainerLogIn text-white">
       <section className="userFormSection">
         <div>
           <h2 className="userFormTitle">Log In</h2>
-          <hr className="hrUserForm mt-1" />
+          <hr className="hrUserForm mt-" />
         </div>
         <div className="d-flex justify-content-between">
           <div className="divUserForm">
             <LogInForm></LogInForm>
-            <p className="center">Forgot your password?</p>
-            <hr className="mb-3"/>
+            <hr className="mb-1"/>
+            <p className="center fs-5">Forgot your password?</p>
             <Link to={'/signup'} className="center link">
-              <button className="btn btn-success">Create new account</button>
+              <button className="btn btn-light">Create new account</button>
             </Link>
           </div>
-          <div className="divUserButtons">
+          <div className="divUserButtons mt-">
             <div>
               <FacebookBtn></FacebookBtn>
               <GoogleBtn></GoogleBtn>

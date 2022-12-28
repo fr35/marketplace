@@ -1,15 +1,19 @@
+.ringContainer {
+    height: 100vh;
+}
 .ring {
-    margin-top: 100px;
+    margin-bottom: 200px;
 }
 .productContainer {
-    width: 885px;
-    height: 264.09px;
+    width: 95%;
+    height: 220px;
     background-color: white;
-    padding: 20px 50px 20px 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .cardImage {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
 }
 .text {
     font-size: 20px;
@@ -23,6 +27,9 @@
     font-size: 12px;
     font-weight: 300;
     line-height: 1;
+}
+.userProductSeller {
+    text-decoration-line:underline;
 }
 .textPrice {
     font-size: 30px;

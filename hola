@@ -1,0 +1,57 @@
+// const magnifierHeight = 200
+    // const magnifieWidth = 200
+    // const zoomLevel = 1.5
+    // const [[x, y], setXY] = useState([0, 0]);
+    // const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
+    // const [showMagnifier, setShowMagnifier] = useState(false);
+    // function mouseEnter(e) {
+    //     const elem = e.currentTarget;
+    //     const { width, height } = elem.getBoundingClientRect();
+    //     setSize([width, height]);
+    //     setShowMagnifier(true);
+    // }
+    // function mouseMove(e) {
+    //     const elem = e.currentTarget;
+    //     const { top, left } = elem.getBoundingClientRect();
+    //     const x = e.pageX - left - window.pageXOffset;
+    //     const y = e.pageY - top - window.pageYOffset;
+    //     setXY([x, y]);
+    // }
+    // function mouseLeave() {setShowMagnifier(false)}
+
+
+    // <div>
+        //     <div className='containerImgMiniature'>
+        //         <img id="pic1" onmouseover="changeImage('img/img1.webp', 1)" src={product.thumbnail}/>
+        //         <img id="pic2" onmouseover="changeImage('img/img2.webp', 2)" src={product.thumbnail}/>
+        //         <img id="pic3" onmouseover="changeImage('img/img3.webp', 3)" src={product.thumbnail}/>
+        //         <img id="pic4" onmouseover="changeImage('img/img4.webp', 4)" src={product.thumbnail}/>
+        //         <img id="pic5" onmouseover="changeImage('img/img5.webp', 5)" src={product.thumbnail}/>
+        //         <img id="pic6" onmouseover="changeImage('img/img5.webp', 6)" src={product.thumbnail}/>
+        //         <img id="pic7" onmouseover="changeImage('img/img5.webp', 7)" src={product.thumbnail}/>
+        //     </div>
+        //     <div>
+        //         <div className='containerImageDetail'>
+        //             <img src={src} alt={product.title} className='imgDetail' id='pic' onMouseEnter={mouseEnter}    onMouseMove={mouseMove} onMouseLeave={mouseLeave}/>
+        //             <div 
+        //                 style={{
+        //                     display: showMagnifier ? "" : "none", 
+        //                     position:"absolute",
+        //                     pointerEvents:"none", 
+        //                     height:`${magnifierHeight}px`, 
+        //                     width:`${magnifieWidth}px`, 
+        //                     top:`${y - magnifierHeight / 2}px`, 
+        //                     left:`${x - magnifieWidth / 2}px`, 
+        //                     opacity:"1", 
+        //                     border:"1px solid lightgray",
+        //                     backgroundColor:"white", 
+        //                     backgroundImage:`url('${src}')`, 
+        //                     backgroundRepeat:"no-repeat",
+        //                     backgroundSize:`${imgWidth * zoomLevel}px ${imgHeight * zoomLevel}px`,
+        //                     backgroundPositionX:`${-x * zoomLevel + magnifieWidth / 2}px`,
+        //                     backgroundPositionY:`${-y * zoomLevel + magnifierHeight / 2}px`
+        //                 }}>
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
